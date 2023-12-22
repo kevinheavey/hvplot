@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>Kde — hvPlot 0.9.1 documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/scroller.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+<script src="../../_static/jquery.js"></script>
+<script src="../../_static/underscore.js"></script>
+<script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="../../_static/doctools.js"></script>
+<script src="../../_static/sphinx_highlight.js"></script>
+<script src="../../_static/clipboard.min.js"></script>
+<script src="../../_static/copybutton.js"></script>
+<script src="../../_static/design-tabs.js"></script>
+<script>
+    window.goatcounter = {
+        path: function(p) { return location.host + p }
+    }
+</script>
+<script async="async" data-goatcounter="https://holoviz.goatcounter.com/count" src="../../_static/js/goatcounter.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'reference/xarray/kde';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<link href="../../_static/favicon.ico" rel="shortcut icon"/>
+<link href="../../about.html" rel="author" title="About these documents"/>
+<link href="../../genindex.html" rel="index" title="Index"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<link href="line.html" rel="next" title="Line"/>
+<link href="image.html" rel="prev" title="Image"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="light" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="Logo image" class="logo__image only-light" src="../../_static/logo_horizontal.svg"/>
+<script>document.write(`<img src="../../_static/logo_horizontal.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Home
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User Guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Reference Gallery
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../topics.html">
+                        Topics
+                      </a>
+</li>
+<div class="nav-item dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<div class="dropdown-menu">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../developer_guide/index.html">
+                        Developer Guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../releases.html">
+                        Releases
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../about.html">
+                        About
+                      </a>
+</li>
+</div>
+</div>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links navbar-nav">
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/holoviz/hvplot" rel="noopener" target="_blank" title="GitHub"><span><i class="fa-brands fa-square-github"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/HoloViews" rel="noopener" target="_blank" title="Twitter"><span><i class="fa-brands fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://discourse.holoviz.org/c/hvplot" rel="noopener" target="_blank" title="Discourse"><span><i class="fa-brands fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://discord.gg/AXRHnJU6sP" rel="noopener" target="_blank" title="Discord"><span><i class="fa-brands fa-discord"></i></span>
+<label class="sr-only">Discord</label></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../index.html">
+                        Home
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../user_guide/index.html">
+                        User Guide
+                      </a>
+</li>
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="../index.html">
+                        Reference Gallery
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../topics.html">
+                        Topics
+                      </a>
+</li>
+<div class="nav-item dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<div class="dropdown-menu">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../developer_guide/index.html">
+                        Developer Guide
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../releases.html">
+                        Releases
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../about.html">
+                        About
+                      </a>
+</li>
+</div>
+</div>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+<div class="navbar-item"><ul aria-label="Icon Links" class="navbar-icon-links navbar-nav">
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/holoviz/hvplot" rel="noopener" target="_blank" title="GitHub"><span><i class="fa-brands fa-square-github"></i></span>
+<label class="sr-only">GitHub</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/HoloViews" rel="noopener" target="_blank" title="Twitter"><span><i class="fa-brands fa-twitter-square"></i></span>
+<label class="sr-only">Twitter</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://discourse.holoviz.org/c/hvplot" rel="noopener" target="_blank" title="Discourse"><span><i class="fa-brands fa-discourse"></i></span>
+<label class="sr-only">Discourse</label></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://discord.gg/AXRHnJU6sP" rel="noopener" target="_blank" title="Discord"><span><i class="fa-brands fa-discord"></i></span>
+<label class="sr-only">Discord</label></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/hvplot.html">hvplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/interactive.html">interactive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/explorer.html">explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../user_guide/index.html">User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Integrations.html">Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Plotting.html">Plotting with Bokeh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Plotting_with_Matplotlib.html">Plotting with Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Plotting_with_Plotly.html">Plotting with Plotly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Customization.html">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Interactive.html">Interactive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Widgets.html">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Plotting_Extensions.html">Plotting Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Explorer.html">Exploring data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Viewing.html">Viewing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Subplots.html">Subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Streaming.html">Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Gridded_Data.html">Gridded Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/NetworkX.html">Network Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Geographic_Data.html">Geographic Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Timeseries_Data.html">Timeseries Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Statistical_Plots.html">Statistical Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user_guide/Pandas_API.html">Pandas API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Reference Gallery</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pandas/index.html">Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/andrewscurves.html">Andrewscurves</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/area.html">Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/bar.html">Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/barh.html">Barh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/bivariate.html">Bivariate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/box.html">Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/errorbars.html">Errorbars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/heatmap.html">Heatmap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/hexbin.html">Hexbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/hist.html">Hist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/kde.html">Kde</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/labels.html">Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/lagplot.html">Lagplot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/line.html">Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/ohlc.html">Ohlc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/parallelcoordinates.html">Parallelcoordinates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/scatter.html">Scatter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/scattermatrix.html">Scattermatrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/step.html">Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/table.html">Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/violin.html">Violin</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../geopandas/index.html">Geopandas</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../geopandas/points.html">Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../geopandas/polygons.html">Polygons</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Xarray</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bar.html">Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contour.html">Contour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contourf.html">Contourf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hist.html">Hist</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Kde</a></li>
+<li class="toctree-l3"><a class="reference internal" href="line.html">Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quadmesh.html">Quadmesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rgb.html">Rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vectorfield.html">Vectorfield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="violin.html">Violin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../topics.html">Topics</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://examples.holoviz.org/portfolio_optimizer/portfolio.html">Portfolio Optimizer</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://examples.holoviz.org/heat_and_trees/Heat_and_Trees.html">Heat and Trees</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/index.html">Getting Set up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/testing.html">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases.html">Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Reference Gallery</a></li>
+<li class="breadcrumb-item"><a class="nav-link" href="index.html">Xarray</a></li>
+<li aria-current="page" class="breadcrumb-item active">Kde</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="kde">
+<h1>Kde<a class="headerlink" href="#kde" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://raw.githubusercontent.com/holoviz/hvplot/main/examples/reference/xarray/kde.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+<hr class="docutils"/>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hvplot.xarray</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+  var py_version = '3.1.1'.replace('rc', '-rc.').replace('.dev', '-dev.');
+  var is_dev = py_version.indexOf("+") !== -1 || py_version.indexOf("-") !== -1;
+  var reloading = false;
+  var Bokeh = root.Bokeh;
+  var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks;
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+    if (js_exports == null) js_exports = {};
+
+    root._bokeh_onload_callbacks.push(callback);
+
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
+      run_callbacks();
+      return null;
+    }
+    if (!reloading) {
+      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    }
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+    window._bokeh_on_load = on_load
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {'jspanel': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/jspanel', 'jspanel-modal': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal', 'jspanel-tooltip': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip', 'jspanel-hint': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint', 'jspanel-layout': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout', 'jspanel-contextmenu': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu', 'jspanel-dock': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock', 'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@7.2.3/dist/gridstack-all', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'jspanel': {'exports': 'jsPanel'}, 'gridstack': {'exports': 'GridStack'}}});
+      require(["jspanel"], function(jsPanel) {
+	window.jsPanel = jsPanel
+	on_load()
+      })
+      require(["jspanel-modal"], function() {
+	on_load()
+      })
+      require(["jspanel-tooltip"], function() {
+	on_load()
+      })
+      require(["jspanel-hint"], function() {
+	on_load()
+      })
+      require(["jspanel-layout"], function() {
+	on_load()
+      })
+      require(["jspanel-contextmenu"], function() {
+	on_load()
+      })
+      require(["jspanel-dock"], function() {
+	on_load()
+      })
+      require(["gridstack"], function(GridStack) {
+	window.GridStack = GridStack
+	on_load()
+      })
+      require(["notyf"], function() {
+	on_load()
+      })
+      root._bokeh_is_loading = css_urls.length + 9;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
+    }
+
+    var existing_stylesheets = []
+    var links = document.getElementsByTagName('link')
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]
+      if (link.href != null) {
+	existing_stylesheets.push(link.href)
+      }
+    }
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      if (existing_stylesheets.indexOf(url) !== -1) {
+	on_load()
+	continue;
+      }
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }    if (((window['jsPanel'] !== undefined) && (!(window['jsPanel'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/jspanel.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu.js', 'https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/gridstack/gridstack@7.2.3/dist/gridstack-all.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    var existing_scripts = []
+    var scripts = document.getElementsByTagName('script')
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i]
+      if (script.src != null) {
+	existing_scripts.push(script.src)
+      }
+    }
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (const name in js_exports) {
+      var url = js_exports[name];
+      if (skip.indexOf(url) >= 0 || root[name] != null) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onerror = on_error;
+      element.async = false;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      element.textContent = `
+      import ${name} from "${url}"
+      window.${name} = ${name}
+      window._bokeh_on_load()
+      `
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.1.min.js", "https://cdn.holoviz.org/panel/1.3.0-a.9/dist/panel.min.js"];
+  var js_modules = [];
+  var js_exports = {};
+  var css_urls = [];
+  var inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }
+      // Cache old bokeh versions
+      if (Bokeh != undefined && !reloading) {
+	var NewBokeh = root.Bokeh;
+	if (Bokeh.versions === undefined) {
+	  Bokeh.versions = new Map();
+	}
+	if (NewBokeh.version !== Bokeh.version) {
+	  Bokeh.versions.set(NewBokeh.version, NewBokeh)
+	}
+	root.Bokeh = Bokeh;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+    root._bokeh_is_initializing = false
+  }
+
+  function load_or_wait() {
+    // Implement a backoff loop that tries to ensure we do not load multiple
+    // versions of Bokeh and its dependencies at the same time.
+    // In recent versions we use the root._bokeh_is_initializing flag
+    // to determine whether there is an ongoing attempt to initialize
+    // bokeh, however for backward compatibility we also try to ensure
+    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
+    // before older versions are fully initialized.
+    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
+      root._bokeh_is_initializing = false;
+      root._bokeh_onload_callbacks = undefined;
+      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
+      load_or_wait();
+    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
+      setTimeout(load_or_wait, 100);
+    } else {
+      Bokeh = root.Bokeh;
+      bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+      root._bokeh_is_initializing = true
+      root._bokeh_onload_callbacks = []
+      if (!reloading && (!bokeh_loaded || is_dev)) {
+	root.Bokeh = undefined;
+      }
+      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
+	console.debug("Bokeh: BokehJS plotting callback run at", now());
+	run_inline_js();
+      });
+    }
+  }
+  // Give older versions of the autoload script a head-start to ensure
+  // they initialize before we start loading newer version.
+  setTimeout(load_or_wait, 100)
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>*[data-root-id],
+*[data-root-id] > * {
+  box-sizing: border-box;
+  font-family: var(--jp-ui-font-family);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
+}
+
+/* Override VSCode background color */
+.cell-output-ipywidget-background:has(
+    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
+  ),
+.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
+  background-color: transparent !important;
+}
+</style></div></div>
+</div>
+<p>Kernel density estimate (<code class="docutils literal notranslate"><span class="pre">kde</span></code>) provides a mechanism for showing the distribution and spread of the data. In <code class="docutils literal notranslate"><span class="pre">hvplot</span></code> the method is exposed both as <code class="docutils literal notranslate"><span class="pre">kde</span></code> and <code class="docutils literal notranslate"><span class="pre">density</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">'air_temperature'</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">air</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span>
+<span class="n">air1d</span> <span class="o">=</span> <span class="n">air</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air1d</span><span class="o">.</span><span class="n">hvplot</span><span class="o">.</span><span class="n">kde</span><span class="p">(</span><span class="s1">'air'</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">'lat'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="p1002">
+<div data-root-id="p1002" id="c3b713ac-a9da-473e-a13a-76c1af7e259e" style="display: contents;"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  var docs_json = {"e1bf9d01-522e-4024-a8bd-7fdc1a6bf1ba":{"version":"3.1.1","title":"Bokeh Application","defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"toggle_value1","properties":[{"name":"active_icons","kind":"Any","default":{"type":"map"}},{"name":"options","kind":"Any","default":{"type":"map","entries":[["favorite","heart"]]}},{"name":"value","kind":"Any","default":[]},{"name":"_reactions","kind":"Any","default":[]},{"name":"_base_url","kind":"Any","default":"https://tabler-icons.io/static/tabler-icons/icons/"}]},{"type":"model","name":"copy_to_clipboard1","properties":[{"name":"value","kind":"Any","default":null}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"js_events","kind":"Any","default":{"type":"map"}},{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}],"roots":[{"type":"object","name":"Row","id":"p1002","attributes":{"name":"Row01662","tags":["embedded"],"stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1005","attributes":{"url":"https://cdn.holoviz.org/panel/1.3.0-a.9/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1138","attributes":{"url":"https://cdn.holoviz.org/panel/1.3.0-a.9/dist/css/listpanel.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1003","attributes":{"url":"https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/theme/default.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1004","attributes":{"url":"https://cdn.holoviz.org/panel/1.3.0-a.9/dist/bundled/theme/native.css"}}],"min_width":700,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"Spacer","id":"p1006","attributes":{"name":"HSpacer01673","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1005"},{"id":"p1003"},{"id":"p1004"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}},{"type":"object","name":"Figure","id":"p1014","attributes":{"width":700,"height":300,"margin":[5,10],"sizing_mode":"fixed","align":"start","x_range":{"type":"object","name":"Range1d","id":"p1007","attributes":{"tags":[[["air","4xDaily Air temperature at sigma level 995","degK"]],[]],"start":218.170158496518,"end":311.4248586845614,"reset_start":218.170158496518,"reset_end":311.4248586845614}},"y_range":{"type":"object","name":"Range1d","id":"p1008","attributes":{"tags":[[["air_density","Density",null]],{"type":"map","entries":[["invert_yaxis",false],["autorange",false]]}],"end":0.11920434172341157,"reset_start":0.0,"reset_end":0.11920434172341157}},"x_scale":{"type":"object","name":"LinearScale","id":"p1026"},"y_scale":{"type":"object","name":"LinearScale","id":"p1027"},"title":{"type":"object","name":"Title","id":"p1017","attributes":{"text_color":"black","text_font_size":"12pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1072","attributes":{"name":"25 degrees_north","data_source":{"type":"object","name":"ColumnDataSource","id":"p1062","attributes":{"selected":{"type":"object","name":"Selection","id":"p1064","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1063"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABln8o3goB2Plj83LfqNrw+cM2yjm1m3D465TS6B/PWPkDA4gpNWK4+XGs+KnsNpz52ZJS23bjZPmJPtoJ9JPo+jXPiu+6AED8KuauAKOcUP9xnTbL/YhU/J5uhkQpcIj86NbYpaQAxP1Lo2uN1zzc/iZwycO16QD92QzXzFtVIP1xI7NsiqVM/pMeVfPGSXz9uRm6ruCltP5NySNDaOn4/vIdFfqkwjD8QfGiexUGXPysB7jQ3CqE/JJsqk8Kcpj8yPYUcSmKrP5bppKXB5q4/lhHlJXGOsD8NkAcV60WxP38670qRQbI/rmB7u/Snsz+Cr4Mio2e1PxOil2FFlbc/ctIKEoisuT+81vzkep+6P42TJcAm8ro/RjkD6/Y0uz+Kjf8pvnS7P0In1Wf6vbs/Zo3eGISQuz+RcJE+sK+6P66cWj3nObk/KstNIzgntz/GPHX5WOu0P7yLLlEH9bI/2VXM+B4HsT8shhipNk6uPwBU8yk9gao/uWPOwj3Npj/VchOIcHujP4z9d5IyX6A/1RJ7rFM4mj8xjmMy86iUP/idpXYUQZA/lSIPG8TWiD+6wcD+4KCCP90gP4fod3o/0UStfKCNcj9xN7BqVARsP/6Y/gC8IWg/OsAXlxX7ZT9M7Ai5mKFjP+cpmBa8pGE/0DFsZH6dYD83jpP8UXRfP5ta97ffP1w/2QgMgNMQWT/mJmMjAWZWPw/SCS27OFQ/Z/5ZPDlQVD/XlGFuw2ZTP4xbLzqAF1E/du96VAJ+UD9W1VlfJi1OP0Cf3rLP2Ug/wz2+c5AFRz+IjeGJvSBGP35Du61cqUQ/HKYFHjzqQj/Wd/EPnZxAP1FDCTgmEjw/hePMnoSPOD9cV+iLkDY1P0HXfjx/DzE/3k2XWwtxMT/6XR17ltQxP4/j5MfCyic/RoY8S/WWJT+vBNckfXgoP+fG35CBKyY/9WMD3ZjHIT+bgyhwfn4WPw0MdlL8Ywk/ZJW8nlSACD/dtQkqfvIIP1VpTO13PwU/KXT64xn1AT8IEOMbXj74PhFyux6xPew+oOFIk+5uxj7mVLv533x/Pg=="},"shape":[200],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1073","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1074"}}},"glyph":{"type":"object","name":"Patch","id":"p1069","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#30a2da","fill_alpha":0.5,"hatch_color":"#30a2da","hatch_alpha":0.5}},"selection_glyph":{"type":"object","name":"Patch","id":"p1077","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#30a2da","fill_alpha":0.5,"hatch_color":"#30a2da","hatch_alpha":0.5}},"nonselection_glyph":{"type":"object","name":"Patch","id":"p1070","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#30a2da","fill_alpha":0.5,"hatch_color":"#30a2da","hatch_alpha":0.1}},"muted_glyph":{"type":"object","name":"Patch","id":"p1071","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.2,"fill_color":"#30a2da","fill_alpha":0.2,"hatch_color":"#30a2da","hatch_alpha":0.2}}}},{"type":"object","name":"GlyphRenderer","id":"p1088","attributes":{"name":"75 degrees_north","data_source":{"type":"object","name":"ColumnDataSource","id":"p1078","attributes":{"selected":{"type":"object","name":"Selection","id":"p1080","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1079"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1089","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1090"}}},"glyph":{"type":"object","name":"Patch","id":"p1085","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#fc4f30","fill_alpha":0.5,"hatch_color":"#fc4f30","hatch_alpha":0.5}},"selection_glyph":{"type":"object","name":"Patch","id":"p1092","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#fc4f30","fill_alpha":0.5,"hatch_color":"#fc4f30","hatch_alpha":0.5}},"nonselection_glyph":{"type":"object","name":"Patch","id":"p1086","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#fc4f30","fill_alpha":0.5,"hatch_color":"#fc4f30","hatch_alpha":0.1}},"muted_glyph":{"type":"object","name":"Patch","id":"p1087","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.2,"fill_color":"#fc4f30","fill_alpha":0.2,"hatch_color":"#fc4f30","hatch_alpha":0.2}}}},{"type":"object","name":"GlyphRenderer","id":"p1103","attributes":{"name":"50 degrees_north","data_source":{"type":"object","name":"ColumnDataSource","id":"p1093","attributes":{"selected":{"type":"object","name":"Selection","id":"p1095","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1094"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[200],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1104","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1105"}}},"glyph":{"type":"object","name":"Patch","id":"p1100","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#e5ae38","fill_alpha":0.5,"hatch_color":"#e5ae38","hatch_alpha":0.5}},"selection_glyph":{"type":"object","name":"Patch","id":"p1107","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#e5ae38","fill_alpha":0.5,"hatch_color":"#e5ae38","hatch_alpha":0.5}},"nonselection_glyph":{"type":"object","name":"Patch","id":"p1101","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.5,"fill_color":"#e5ae38","fill_alpha":0.5,"hatch_color":"#e5ae38","hatch_alpha":0.1}},"muted_glyph":{"type":"object","name":"Patch","id":"p1102","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.2,"fill_color":"#e5ae38","fill_alpha":0.2,"hatch_color":"#e5ae38","hatch_alpha":0.2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1023","attributes":{"tools":[{"type":"object","name":"HoverTool","id":"p1011","attributes":{"tags":["hv_created"],"renderers":[{"id":"p1072"},{"id":"p1088"},{"id":"p1103"}],"tooltips":[["Latitude (degrees_north)","@{lat}"],["4xDaily Air temperature at sigma level 995 (degK)","@{air}"],["Density","@{air_density}"]]}},{"type":"object","name":"SaveTool","id":"p1042"},{"type":"object","name":"PanTool","id":"p1043"},{"type":"object","name":"WheelZoomTool","id":"p1044"},{"type":"object","name":"BoxZoomTool","id":"p1045","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1046","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"ResetTool","id":"p1047"}],"active_drag":{"id":"p1043"},"active_scroll":{"id":"p1044"}}},"left":[{"type":"object","name":"LinearAxis","id":"p1035","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1037","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1038"},"axis_label":"Density","major_label_policy":{"type":"object","name":"AllLabels","id":"p1036"}}}],"right":[{"type":"object","name":"Legend","id":"p1075","attributes":{"location":[0,0],"title":"Latitude","click_policy":"mute","items":[{"type":"object","name":"LegendItem","id":"p1076","attributes":{"label":{"type":"value","value":"25 degrees_north"},"renderers":[{"id":"p1072"}]}},{"type":"object","name":"LegendItem","id":"p1091","attributes":{"label":{"type":"value","value":"75 degrees_north"},"renderers":[{"id":"p1088"}]}},{"type":"object","name":"LegendItem","id":"p1106","attributes":{"label":{"type":"value","value":"50 degrees_north"},"renderers":[{"id":"p1103"}]}}]}}],"below":[{"type":"object","name":"LinearAxis","id":"p1028","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1030","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1031"},"axis_label":"4xDaily Air temperature at sigma level 995 (degK)","major_label_policy":{"type":"object","name":"AllLabels","id":"p1029"}}}],"center":[{"type":"object","name":"Grid","id":"p1034","attributes":{"axis":{"id":"p1028"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1041","attributes":{"dimension":1,"axis":{"id":"p1035"},"grid_line_color":null}}],"min_border_top":10,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"output_backend":"webgl"}},{"type":"object","name":"Spacer","id":"p1136","attributes":{"name":"HSpacer01676","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1005"},{"id":"p1003"},{"id":"p1004"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}}]}}],"callbacks":{"type":"map"}}};
+  var render_items = [{"docid":"e1bf9d01-522e-4024-a8bd-7fdc1a6bf1ba","roots":{"p1002":"c3b713ac-a9da-473e-a13a-76c1af7e259e"},"root_ids":["p1002"]}];
+  var docs = Object.values(docs_json)
+  if (!docs) {
+    return
+  }
+  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
+  const is_dev = py_version.indexOf("+") !== -1 || py_version.indexOf("-") !== -1
+  function embed_document(root) {
+    var Bokeh = get_bokeh(root)
+    Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  function get_bokeh(root) {
+    if (root.Bokeh === undefined) {
+      return null
+    } else if (root.Bokeh.version !== py_version && !is_dev) {
+      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
+	return null
+      }
+      return root.Bokeh.versions.get(py_version);
+    } else if (root.Bokeh.version === py_version) {
+      return root.Bokeh
+    }
+    return null
+  }
+  function is_loaded(root) {
+    var Bokeh = get_bokeh(root)
+    return (Bokeh != null && Bokeh.Panel !== undefined)
+  }
+  if (is_loaded(root)) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (is_loaded(root)) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+	  var Bokeh = get_bokeh(root)
+	  if (Bokeh == null || Bokeh.Panel == null) {
+            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
+	  } else {
+	    console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
+	    embed_document(root)
+	  }
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+<div id="scroller-right">This web page was generated from a Jupyter notebook and not all interactivity will work on this website. <a href="https://raw.githubusercontent.com/holoviz/hvplot/main/examples/reference/xarray/kde.ipynb">Right click to download and run locally</a> for full Python-backed interactivity.</div><hr class="docutils"/>
+<p><a class="reference external" href="https://raw.githubusercontent.com/holoviz/hvplot/main/examples/reference/xarray/kde.ipynb">Download this notebook from GitHub (right-click to download).</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="image.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Image</p>
+</div>
+</a>
+<a class="right-next" href="line.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Line</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="tocsection sourcelink">
+<a href="../../_sources/reference/xarray/kde.rst.txt">
+<i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+</div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="nbsite-copyright-last-updated">
+<span class="copyright">
+            © Copyright 2016-2023 Holoviz contributors.
+    </span>
+<span class="last-updated">Last updated on 2023-12-22.</span><br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>
